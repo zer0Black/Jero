@@ -1,12 +1,14 @@
 package com.lxt.core.advice;
 
-import com.lxt.core.entity.RestInfo;
 import com.lxt.core.enums.Code;
+import com.lxt.core.http.ResponseMessage;
+import com.lxt.core.http.Result;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,14 +24,13 @@ public class GlobalExceptionHandler {
 
     private final Log log = LogFactory.getLog(GlobalExceptionHandler.class);
 
-    @ResponseStatus(value = HttpStatus.SERVICE_UNAVAILABLE, reason = "server error")
+    @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(Exception.class)
-    public RestInfo resolveException(Exception exception, HttpServletRequest request){
+    @ResponseBody
+    public ResponseMessage handlerAdcDaBaseException(Exception exception) {
         Throwable deepestException = deepestExcepetion(exception);
         log.error("全局异常处理捕获："+ deepestException);
-
-        RestInfo restInfo = RestInfo.build(Code.SERVICE_DISABLED, Code.SERVICE_DISABLED.getMsg());
-        return restInfo;
+        return Result.error(Code.ERROR.getCode(), "程序异常，请重试。如果重复出现请联系管理员处理！");
     }
 
     /**

@@ -36,7 +36,7 @@ public class EncodeUtils {
         try {
             return Hex.decodeHex(input.toCharArray());
         } catch (DecoderException e) {
-            throw Exceptions.unchecked(e);
+            throw ExceptionsUtils.unchecked(e);
         }
     }
 
@@ -107,7 +107,7 @@ public class EncodeUtils {
         try {
             return URLEncoder.encode(part, DEFAULT_URL_ENCODING);
         } catch (UnsupportedEncodingException e) {
-            throw Exceptions.unchecked(e);
+            throw ExceptionsUtils.unchecked(e);
         }
     }
 
@@ -119,7 +119,7 @@ public class EncodeUtils {
         try {
             return URLDecoder.decode(part, DEFAULT_URL_ENCODING);
         } catch (UnsupportedEncodingException e) {
-            throw Exceptions.unchecked(e);
+            throw ExceptionsUtils.unchecked(e);
         }
     }
 }

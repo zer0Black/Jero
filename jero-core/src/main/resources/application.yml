@@ -1,0 +1,15 @@
+mybatis:
+    type-aliases-package: com.lxt.**.mapper #model包位置映射
+    mapper-locations: classpath:mapper/*.xml
+
+mapper:
+    mappers:
+        - com.lxt.core.util.JeroMapper
+    not-empty: false
+    identity: ORACLE
+
+pagehelper:
+    helperDialect: oracle
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql

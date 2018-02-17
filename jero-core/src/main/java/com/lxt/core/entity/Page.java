@@ -1,12 +1,9 @@
 package com.lxt.core.entity;
 
-import com.lxt.core.domain.Pageable;
-import com.lxt.core.domain.sort.Sort;
 import org.springframework.util.Assert;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * 分页实体
@@ -14,81 +11,88 @@ import java.util.List;
  * @author zer0
  * @version 1.0
  */
-public class Page<T> {
+public class Page<T> implements Serializable {
 
-    private int curPage; //当前页
-    private int pageSize = 20; //每页数，默认20
-    private long count; //总数
+    private static final long serialVersionUID = -7405699269242583458L;
+
+    private Integer pageNo = 1; //当前页
+    private Integer pageSize = 20; //每页数，默认20
+    private Long count; //总数
+    private Long totalPage; //总页数
     private List<T> content = new ArrayList<T>();
-    private Pageable pageable;
-    public Page(List<T> content){
+    private Map<String, String> ext = new HashMap<>();  // 预留，用于传输分页时候需要传输的数据
+    private String orderBy; // 排序字段
+    private String orderWay = "asc"; //排序方式
 
+
+    public Page(List<T> content){
+        this.content.addAll(content);
     }
 
-    public Page(List<T> content, Pageable pageable, long count){
+    public Page(List<T> content, long count){
         this.content.addAll(content);
-        this.pageable = pageable;
         Assert.isTrue(count >= content.size(), "Total must not be less than the number of elements given!");
         this.count = count;
-    }
-
-    public int getCurPage() {
-        return pageable == null ? 0 : pageable.getPageNumber();
-    }
-
-    public int getPageSize() {
-        return pageable == null ? 0 : pageable.getPageSize();
-    }
-
-    public long getCount() {
-        return count;
-    }
-
-    public List<T> getContent() {
-        return Collections.unmodifiableList(content);
     }
 
     public int getTotalPage() {
         return getPageSize() == 0 ? 1 : (int) Math.ceil((double) count / (double) getPageSize());
     }
 
-    public int getOffset() {
-        return curPage * pageSize;
+    public Integer getPageNo() {
+        return pageNo;
     }
 
-    public int getNumberOfElements() {
-        return content.size();
+    public void setPageNo(Integer pageNo) {
+        this.pageNo = pageNo;
     }
 
-    public boolean hasPrevious() {
-        return getCurPage() > 0;
+    public Integer getPageSize() {
+        return pageSize;
     }
 
-    public boolean hasNext() {
-        return getCurPage() + 1 < getTotalPage();
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
     }
 
-    public boolean isFirst() {
-        return !hasPrevious();
+    public Long getCount() {
+        return count;
     }
 
-    public boolean isLast() {
-        return !hasNext();
+    public void setCount(Long count) {
+        this.count = count;
     }
 
-    public Pageable nextPageable() {
-        return hasNext() ? pageable.next() : null;
+    public List<T> getContent() {
+        return content;
     }
 
-    public Pageable previousPageable() {
-        if (hasPrevious()) {
-            return pageable.previousOrFirst();
-        }
-        return null;
+    public void setContent(List<T> content) {
+        this.content.addAll(content);
     }
 
-    public Sort getSort() {
-        return pageable == null ? null : pageable.getSort();
+    public Map<String, String> getExt() {
+        return ext;
+    }
+
+    public void setExt(Map<String, String> ext) {
+        this.ext = ext;
+    }
+
+    public String getOrderBy() {
+        return orderBy;
+    }
+
+    public void setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
+    }
+
+    public String getOrderWay() {
+        return orderWay;
+    }
+
+    public void setOrderWay(String orderWay) {
+        this.orderWay = orderWay;
     }
 
     public boolean hasContent() {

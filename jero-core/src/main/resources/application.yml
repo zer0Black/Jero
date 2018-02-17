@@ -7,9 +7,10 @@ mapper:
         - com.lxt.core.util.JeroMapper
     not-empty: false
     identity: ORACLE
+    before: true
 
 pagehelper:
     helperDialect: oracle
-    reasonable: true
+    reasonable: false
     supportMethodsArguments: true
     params: count=countSql

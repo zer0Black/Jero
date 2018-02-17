@@ -1,7 +1,6 @@
 package com.lxt.common.utils;
 
 
-import com.lxt.common.exception.Exceptions;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;

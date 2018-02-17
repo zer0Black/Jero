@@ -1,4 +1,4 @@
-package com.lxt.common.exception;
+package com.lxt.common.utils;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

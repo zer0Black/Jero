@@ -1,7 +1,6 @@
 package com.lxt.core.entity;
 
 import com.lxt.core.enums.DeleteEnum;
-import com.lxt.core.enums.YesOrNoEnum;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -9,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
 
 public class BaseEntity implements Serializable{
 
@@ -26,5 +24,37 @@ public class BaseEntity implements Serializable{
 
     @Column(name = "CREATE_BY")
     private String createBy; //创建人
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getDel() {
+        return del;
+    }
+
+    public void setDel(Integer del) {
+        this.del = del;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
 
 }

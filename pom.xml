@@ -9,6 +9,7 @@
     <modules>
         <module>jero-core</module>
 		<module>jero-common</module>
+		<module>jero-file</module>
 	</modules>
     <packaging>pom</packaging>
 

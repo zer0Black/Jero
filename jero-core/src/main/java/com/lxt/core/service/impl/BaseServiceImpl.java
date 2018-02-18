@@ -3,9 +3,11 @@ package com.lxt.core.service.impl;
 import com.lxt.core.service.BaseService;
 import com.lxt.core.util.JeroMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional(rollbackFor={RuntimeException.class, Exception.class})
 public class BaseServiceImpl<M extends JeroMapper<T>, T> implements BaseService<T>{
 
     @Autowired

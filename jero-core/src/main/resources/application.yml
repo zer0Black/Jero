@@ -1,3 +1,6 @@
+jero:
+     swagger-open: true #是否开启swagger (true/false)
+
 mybatis:
     type-aliases-package: com.lxt.**.mapper #model包位置映射
     mapper-locations: classpath:mapper/*.xml

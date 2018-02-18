@@ -243,6 +243,6 @@ import tk.mybatis.mapper.common.MySqlMapper;
  接口：Mapper<T>
  该接口兼容Mapper2.x版本，继承了BaseMapper<T>, ExampleMapper<T>, RowBoundsMapper<T>三个组合接口。
  */
-public interface JeroMapper extends Mapper<T>, MySqlMapper<T> {
+public interface JeroMapper<T> extends Mapper<T>, MySqlMapper<T> {
     // FIXME 特别注意，该接口不能被扫描到，否则会出错
 }

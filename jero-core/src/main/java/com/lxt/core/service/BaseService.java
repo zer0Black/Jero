@@ -1,5 +1,8 @@
 package com.lxt.core.service;
 
+import com.github.pagehelper.PageInfo;
+import com.lxt.core.entity.Pager;
+
 import java.util.List;
 
 public interface BaseService<T> {
@@ -28,6 +31,13 @@ public interface BaseService<T> {
      */
     List<T> selectList(T entity);
 
+    /**
+     * 分页查询列表
+     *
+     * @param pager
+     * @return
+     */
+    PageInfo<T> selectPage(Pager pager);
 
     /**
      * 获取所有对象

@@ -1,6 +1,8 @@
 package com.lxt.core.service.impl;
 
-import com.lxt.core.entity.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.lxt.core.entity.Pager;
 import com.lxt.core.service.BaseService;
 import com.lxt.core.util.JeroMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,15 @@ public class BaseServiceImpl<M extends JeroMapper<T>, T> implements BaseService<
     @Override
     public List<T> selectList(T entity) {
         return mapper.select(entity);
+    }
+
+    @Override
+    public PageInfo<T> selectPage(Pager pager){
+        PageHelper.startPage(pager.getPage(), pager.getPageSize());
+        List<T> list = selectListAll();
+        //用PageInfo对结果进行包装
+        PageInfo page = new PageInfo(list);
+        return page;
     }
 
     @Override

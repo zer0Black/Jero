@@ -1,6 +1,12 @@
 jero:
      swagger-open: true #是否开启swagger(true/false)
 
+druid:
+    driverClassName: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@//118.190.136.80:1521/orcl
+    username: jero
+    password: 123456
+
 mybatis:
     type-aliases-package: com.lxt.file.mapper #model包位置映射
     mapper-locations: classpath:mapper/*.xml

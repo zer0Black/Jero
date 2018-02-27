@@ -1,5 +1,6 @@
 package com.lxt.core.service.impl;
 
+import com.lxt.core.entity.Page;
 import com.lxt.core.service.BaseService;
 import com.lxt.core.util.JeroMapper;
 import org.springframework.beans.factory.annotation.Autowired;

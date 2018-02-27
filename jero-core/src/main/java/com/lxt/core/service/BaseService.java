@@ -21,14 +21,6 @@ public interface BaseService<T> {
     T selectById(Object id);
 
     /**
-     * 根据ID集合来查询
-     *
-     * @param ids
-     * @return
-     */
-//    List<T> selectListByIds(List<Object> ids);
-
-    /**
      * 查询列表
      *
      * @param entity

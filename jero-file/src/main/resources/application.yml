@@ -1,0 +1,19 @@
+jero:
+     swagger-open: true #是否开启swagger(true/false)
+
+mybatis:
+    type-aliases-package: com.lxt.file.mapper #model包位置映射
+    mapper-locations: classpath:mapper/*.xml
+
+mapper:
+    mappers:
+        - com.lxt.core.util.JeroMapper
+    not-empty: false
+    identity: ORACLE
+    before: true
+
+pagehelper:
+    helperDialect: oracle
+    reasonable: false
+    supportMethodsArguments: true
+    params: count=countSql

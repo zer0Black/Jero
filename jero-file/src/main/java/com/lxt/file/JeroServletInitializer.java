@@ -1,4 +1,4 @@
-package com.lxt;
+package com.lxt.file;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
@@ -15,4 +15,5 @@ public class JeroServletInitializer extends SpringBootServletInitializer{
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(JeroFileApplication.class);
     }
+
 }

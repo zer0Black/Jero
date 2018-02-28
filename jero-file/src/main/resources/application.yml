@@ -23,3 +23,12 @@ pagehelper:
     reasonable: false
     supportMethodsArguments: true
     params: count=countSql
+
+fdfs:
+  soTimeout: 1500
+  connectTimeout: 600
+  thumbImage:             #缩略图生成参数
+    width: 150
+    height: 150
+  trackerList:            #TrackerList参数,支持多个
+    - 47.97.19.73:22122

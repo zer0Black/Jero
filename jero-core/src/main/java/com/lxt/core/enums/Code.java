@@ -10,7 +10,6 @@ public enum Code {
 
     ERROR(0, "系统错误"),
     SUCCESS(1, "操作成功"),
-
     ILLEGAL_TOKEN(1001, "不合法的凭证"),
     ILLEGAL_FILE_TYPE(1002, "不合法的文件类型"),
     ILLEGAL_FILE_SIZE(1003, "不合法的文件大小"),
@@ -18,7 +17,8 @@ public enum Code {
     UNSUPPORT_IMAGE_TYPE(1005, "不支持的图片格式"),
     UNSUPPORT_VIDEO_TYPE(1006, "不支持的视频格式"),
     TEXT_OVER_LIMIT(1007, "文本超过限制"),
-    JSON_ERROR(1008, "解析JSON内容错误");
+    JSON_ERROR(1008, "解析JSON内容错误"),
+    NOT_FIND_FILE(1009, "文件不存在");
 
     private int code;
     private String msg;

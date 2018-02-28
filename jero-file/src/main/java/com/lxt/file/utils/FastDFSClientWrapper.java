@@ -2,19 +2,19 @@ package com.lxt.file.utils;
 
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.exception.FdfsUnsupportStorePathException;
-import com.github.tobato.fastdfs.service.DefaultFastFileStorageClient;
+import com.github.tobato.fastdfs.proto.storage.DownloadCallback;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import com.lxt.common.exception.UnsupportFileTypeException;
 import com.lxt.common.utils.FileUtils;
 import com.lxt.common.utils.StringUtils;
+import com.lxt.file.entity.FileEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -66,6 +66,37 @@ public class FastDFSClientWrapper {
                 FileUtils.getExtend(file.getOriginalFilename()),
                 null);
         return path.getFullPath();
+    }
+
+    /**
+     * 下载文件
+     * @param fileUrl
+     * @return OutputStream
+     */
+    private OutputStream downloadFile(String fileUrl){
+        if (StringUtils.isEmpty(fileUrl)) return null;
+        try{
+            StorePath path = StorePath.praseFromUrl(fileUrl);
+            OutputStream out = storageClient.downloadFile(path.getGroup(), path.getPath(), new DownloadCallback<OutputStream>() {
+                @Override
+                public OutputStream recv(InputStream inputStream) throws IOException {
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[2048];
+                    int len;
+                    while ((len = inputStream.read(buffer)) > -1 ) {
+                        baos.write(buffer, 0, len);
+                    }
+                    baos.flush();
+
+                    return baos;
+                }
+            });
+
+            return out;
+        }catch (FdfsUnsupportStorePathException e){
+            logger.warn(e.getMessage());
+        }
+        return null;
     }
 
     /**

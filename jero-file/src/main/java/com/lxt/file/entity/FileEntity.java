@@ -16,9 +16,18 @@ public class FileEntity extends BaseEntity implements Serializable{
 
     private String type; //拓展名
 
+    private String contentType; //对应http协议的ContentType
+
     private String savePath;
 
-    private String contentType; //对应http协议的ContentType
+
+    public FileEntity(String name, String type, String contentType,
+                      String savePath){
+        this.name = name;
+        this.type = type;
+        this.contentType = contentType;
+        this.savePath = savePath;
+    }
 
     public String getName() {
         return name;
@@ -51,4 +60,5 @@ public class FileEntity extends BaseEntity implements Serializable{
     public void setContentType(String contentType) {
         this.contentType = contentType;
     }
+
 }

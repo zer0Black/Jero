@@ -10,7 +10,8 @@
         <module>jero-core</module>
 		<module>jero-common</module>
 		<module>jero-file</module>
-	</modules>
+        <module>jero-center</module>
+    </modules>
     <packaging>pom</packaging>
 
 	<name>jero</name>
@@ -55,6 +56,18 @@
 			<url>http://60.30.69.57:8182/nexus/content/repositories/thirdparty/</url>
 		</repository>
 	</distributionManagement>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Edgware.SR2</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 		<dependency>

@@ -2,8 +2,14 @@ server:
   port: 8081
 
 jero:
-     swagger-open: true #是否开启swagger(true/false)
-     release: localhost
+    swagger-open: true #是否开启swagger(true/false)
+    release: localhost
+
+spring:
+    http:
+        multipart:
+          max-request-size: 100MB
+          max-file-size: 100MB
 
 druid:
     driverClassName: oracle.jdbc.driver.OracleDriver

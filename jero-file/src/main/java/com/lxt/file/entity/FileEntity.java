@@ -16,14 +16,17 @@ public class FileEntity extends BaseEntity implements Serializable{
 
     private String type; //拓展名
 
+    private Long size; //文件大小
+
     private String contentType; //对应http协议的ContentType
 
     private String savePath;
 
 
     public FileEntity(String name, String type, String contentType,
-                      String savePath){
+                      Long size, String savePath){
         this.name = name;
+        this.size = size;
         this.type = type;
         this.contentType = contentType;
         this.savePath = savePath;
@@ -43,6 +46,14 @@ public class FileEntity extends BaseEntity implements Serializable{
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Long getSize() {
+        return size;
+    }
+
+    public void setSize(Long size) {
+        this.size = size;
     }
 
     public String getSavePath() {

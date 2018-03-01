@@ -46,6 +46,7 @@ public class FileServiceImpl extends BaseServiceImpl<FileMapper, FileEntity> imp
         String fileName = file.getOriginalFilename();
         String fileExt = FileUtils.getExtend(file.getOriginalFilename());
         String contentType = file.getContentType();
+        Long size = file.getSize();
 
         StringBuilder storagePath = new StringBuilder();
         if (ImageUtils.isFastdfsSupportImage(fileExt)){
@@ -54,7 +55,7 @@ public class FileServiceImpl extends BaseServiceImpl<FileMapper, FileEntity> imp
             storagePath.append(fastDFSClient.uploadFile(file));
         }
 
-        FileEntity fileEntity = new FileEntity(fileName, fileExt, contentType, storagePath.toString());
+        FileEntity fileEntity = new FileEntity(fileName, fileExt, contentType, size, storagePath.toString());
         fileMapper.insert(fileEntity);
 
         return fileEntity;

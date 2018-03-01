@@ -2,37 +2,39 @@ server:
   port: 8081
 
 jero:
-    swagger-open: true #是否开启swagger(true/false)
-    release: localhost
+  swagger-open: true #是否开启swagger(true/false)
+  release: localhost
 
 spring:
+  application:
+    name: jero-file
     http:
-        multipart:
-          max-request-size: 100MB
-          max-file-size: 100MB
+      multipart:
+        max-request-size: 100MB
+        max-file-size: 100MB
 
 druid:
-    driverClassName: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@//118.190.136.80:1521/orcl
-    username: jero
-    password: 123456
+  driverClassName: oracle.jdbc.driver.OracleDriver
+  url: jdbc:oracle:thin:@//118.190.136.80:1521/orcl
+  username: jero
+  password: 123456
 
 mybatis:
-    type-aliases-package: com.lxt.file.mapper #model包位置映射
-    mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.lxt.file.mapper #model包位置映射
+  mapper-locations: classpath:mapper/*.xml
 
 mapper:
-    mappers:
-        - com.lxt.core.util.JeroMapper
-    not-empty: false
-    identity: ORACLE
-    before: true
+  mappers:
+      - com.lxt.core.util.JeroMapper
+  not-empty: false
+  identity: ORACLE
+  before: true
 
 pagehelper:
-    helperDialect: oracle
-    reasonable: false
-    supportMethodsArguments: true
-    params: count=countSql
+  helperDialect: oracle
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
 
 fdfs:
   soTimeout: 1500

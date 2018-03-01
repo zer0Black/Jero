@@ -18,7 +18,8 @@ public enum Code {
     UNSUPPORT_VIDEO_TYPE(1006, "不支持的视频格式"),
     TEXT_OVER_LIMIT(1007, "文本超过限制"),
     JSON_ERROR(1008, "解析JSON内容错误"),
-    NOT_FIND_FILE(1009, "文件不存在");
+    NOT_FIND_FILE(1009, "文件不存在"),
+    FILE_STREAM_EXCEPTION(1010, "文件流异常");
 
     private int code;
     private String msg;

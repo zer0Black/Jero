@@ -18,7 +18,7 @@ public class ResponseMessage<T> implements Serializable{
     private int respCode;
     private String respMsg;
     private T data;
-    private boolean ok;
+    private boolean ok = true;
 
     public ResponseMessage() {
     }

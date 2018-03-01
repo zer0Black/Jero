@@ -53,11 +53,8 @@ public class FastDFSClientWrapper {
      * @throws IOException
      */
     public String uploadImageAndCrtThumbImage(MultipartFile file) throws IOException, UnsupportFileTypeException {
-        final String[] SUPPORT_IMAGE_TYPE = { "JPG", "JPEG", "PNG", "GIF", "BMP", "WBMP" };
-        final List<String> SUPPORT_IMAGE_LIST = Arrays.asList(SUPPORT_IMAGE_TYPE);
-
-        String fileExtName =  FileUtils.getExtend(file.getOriginalFilename());
-        if (SUPPORT_IMAGE_LIST.contains(fileExtName.toUpperCase())){
+        String fileExt =  FileUtils.getExtend(file.getOriginalFilename());
+        if (!ImageUtils.isFastdfsSupportImage(fileExt)){
             throw new UnsupportFileTypeException("不支持的文件格式，请保证文件是常见图片格式");
         }
 
@@ -73,13 +70,13 @@ public class FastDFSClientWrapper {
      * @param fileUrl
      * @return OutputStream
      */
-    private OutputStream downloadFile(String fileUrl){
+    public ByteArrayOutputStream downloadFile(String fileUrl){
         if (StringUtils.isEmpty(fileUrl)) return null;
         try{
             StorePath path = StorePath.praseFromUrl(fileUrl);
-            OutputStream out = storageClient.downloadFile(path.getGroup(), path.getPath(), new DownloadCallback<OutputStream>() {
+            ByteArrayOutputStream out = storageClient.downloadFile(path.getGroup(), path.getPath(), new DownloadCallback<ByteArrayOutputStream>() {
                 @Override
-                public OutputStream recv(InputStream inputStream) throws IOException {
+                public ByteArrayOutputStream recv(InputStream inputStream) throws IOException {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     byte[] buffer = new byte[2048];
                     int len;
@@ -87,7 +84,6 @@ public class FastDFSClientWrapper {
                         baos.write(buffer, 0, len);
                     }
                     baos.flush();
-
                     return baos;
                 }
             });

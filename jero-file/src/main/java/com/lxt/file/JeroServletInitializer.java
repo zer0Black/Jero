@@ -1,7 +1,7 @@
 package com.lxt.file;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /**
  * 打war包启动入口
@@ -9,7 +9,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * @author zer0
  * @version 1.0
  */
-public class JeroServletInitializer extends SpringBootServletInitializer{
+public class JeroServletInitializer extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {

@@ -32,12 +32,9 @@ public class FileServiceImpl extends BaseServiceImpl<FileMapper, FileEntity> imp
     @Autowired
     FastDFSClientWrapper fastDFSClient;
 
-    @Autowired
-    FileMapper fileMapper;
-
     @Override
     public FileEntity getById(String fileId) {
-        return fileMapper.selectByPrimaryKey(fileId);
+        return mapper.selectByPrimaryKey(fileId);
     }
 
     @Override
@@ -55,7 +52,7 @@ public class FileServiceImpl extends BaseServiceImpl<FileMapper, FileEntity> imp
         }
 
         FileEntity fileEntity = new FileEntity(fileName, fileExt, contentType, size, storagePath.toString());
-        fileMapper.insert(fileEntity);
+        mapper.insert(fileEntity);
 
         return fileEntity;
     }
@@ -72,7 +69,7 @@ public class FileServiceImpl extends BaseServiceImpl<FileMapper, FileEntity> imp
 
     @Override
     public void downloadFile(HttpServletResponse response, HttpServletRequest request, String fileId) throws IOException {
-        FileEntity file = fileMapper.selectByPrimaryKey(fileId);
+        FileEntity file = mapper.selectByPrimaryKey(fileId);
         ByteArrayOutputStream downedStream = fastDFSClient.downloadFile(file.getSavePath());
 
         response.reset();
@@ -89,8 +86,8 @@ public class FileServiceImpl extends BaseServiceImpl<FileMapper, FileEntity> imp
     @Override
     public boolean deleteFile(String fileId) {
         final int SUCCESS_NUM = 1; //删除一条数据的值一定为1
-        FileEntity file = fileMapper.selectByPrimaryKey(fileId);
-        int delFlag = fileMapper.deleteByPrimaryKey(fileId);
+        FileEntity file = mapper.selectByPrimaryKey(fileId);
+        int delFlag = mapper.deleteByPrimaryKey(fileId);
         if (delFlag == SUCCESS_NUM){
             fastDFSClient.deleteFile(file.getSavePath());
             return true;

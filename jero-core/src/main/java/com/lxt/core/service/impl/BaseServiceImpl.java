@@ -12,9 +12,8 @@ import java.util.List;
 
 @Transactional(rollbackFor={RuntimeException.class, Exception.class})
 public class BaseServiceImpl<M extends JeroMapper<T>, T> implements BaseService<T>{
-
     @Autowired
-    private M mapper;
+    protected M mapper;
 
     @Override
     public T selectOne(T entity) {

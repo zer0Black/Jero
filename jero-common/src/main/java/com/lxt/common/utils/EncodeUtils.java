@@ -20,7 +20,6 @@ import java.net.URLEncoder;
 public class EncodeUtils {
 
     private static final String DEFAULT_URL_ENCODING = "UTF-8";
-    private static final char[] BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
 
     /**
      * Hex编码.

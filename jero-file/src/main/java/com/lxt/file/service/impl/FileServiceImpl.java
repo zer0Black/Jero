@@ -74,17 +74,15 @@ public class FileServiceImpl extends BaseServiceImpl<FileMapper, FileEntity> imp
     @Override
     public void downloadFile(HttpServletResponse response, HttpServletRequest request, String fileId) throws IOException {
         FileEntity file = fileMapper.selectByPrimaryKey(fileId);
-        ByteArrayOutputStream downedStream = fastDFSClient.downloadFile(file.getSavePath());
+        byte[] content = fastDFSClient.downloadFile(file.getSavePath());
 
         response.reset();
         response.setHeader("Content-Disposition", "attachment; filename=" + encodeFileName(request, file.getName()));
         response.setContentType(file.getContentType());
         OutputStream out = new BufferedOutputStream(response.getOutputStream());
 
-        byte[] bytes = downedStream.toByteArray();
-        out.write(bytes);
+        out.write(content);
         out.close();
-        downedStream.close();
     }
 
     @Override

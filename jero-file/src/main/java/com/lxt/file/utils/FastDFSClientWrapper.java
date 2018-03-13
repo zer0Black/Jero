@@ -2,6 +2,7 @@ package com.lxt.file.utils;
 
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.exception.FdfsUnsupportStorePathException;
+import com.github.tobato.fastdfs.proto.storage.DownloadByteArray;
 import com.github.tobato.fastdfs.proto.storage.DownloadCallback;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import com.lxt.common.exception.UnsupportFileTypeException;
@@ -70,25 +71,12 @@ public class FastDFSClientWrapper {
      * @param fileUrl
      * @return OutputStream
      */
-    public ByteArrayOutputStream downloadFile(String fileUrl){
+    public byte[] downloadFile(String fileUrl){
         if (StringUtils.isEmpty(fileUrl)) return null;
         try{
             StorePath path = StorePath.praseFromUrl(fileUrl);
-            ByteArrayOutputStream out = storageClient.downloadFile(path.getGroup(), path.getPath(), new DownloadCallback<ByteArrayOutputStream>() {
-                @Override
-                public ByteArrayOutputStream recv(InputStream inputStream) throws IOException {
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    byte[] buffer = new byte[2048];
-                    int len;
-                    while ((len = inputStream.read(buffer)) > -1 ) {
-                        baos.write(buffer, 0, len);
-                    }
-                    baos.flush();
-                    return baos;
-                }
-            });
-
-            return out;
+            byte[] content = storageClient.downloadFile(path.getGroup(), path.getPath(), new DownloadByteArray());
+            return content;
         }catch (FdfsUnsupportStorePathException e){
             logger.warn(e.getMessage());
         }

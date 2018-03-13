@@ -8,16 +8,15 @@ import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import com.lxt.common.exception.UnsupportFileTypeException;
 import com.lxt.common.utils.FileUtils;
 import com.lxt.common.utils.StringUtils;
-import com.lxt.file.entity.FileEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.*;
-import java.util.Arrays;
-import java.util.List;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * fastDFS客户端工具类

@@ -20,7 +20,7 @@ druid:
   password: 123456
 
 mybatis:
-  type-aliases-package: com.lxt.file.mapper #model包位置映射
+  type-aliases-package: com.lxt.file.entity #model包位置映射
   mapper-locations: classpath:mapper/*.xml
 
 mapper:

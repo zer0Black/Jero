@@ -20,7 +20,6 @@ import java.net.URLEncoder;
 public class EncodeUtils {
 
     private static final String DEFAULT_URL_ENCODING = "UTF-8";
-    private static final char[] BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
 
     /**
      * Hex编码.
@@ -62,17 +61,6 @@ public class EncodeUtils {
     }
 
     /**
-     * Base62编码。
-     */
-    public static String encodeBase62(byte[] input) {
-        char[] chars = new char[input.length];
-        for (int i = 0; i < input.length; i++) {
-            chars[i] = BASE62[((input[i] & 0xFF) % BASE62.length)];
-        }
-        return new String(chars);
-    }
-
-    /**
      * Html 转码.
      */
     public static String escapeHtml(String html) {
@@ -84,20 +72,6 @@ public class EncodeUtils {
      */
     public static String unescapeHtml(String htmlEscaped) {
         return StringEscapeUtils.unescapeHtml4(htmlEscaped);
-    }
-
-    /**
-     * Xml 转码.
-     */
-    public static String escapeXml(String xml) {
-        return StringEscapeUtils.escapeXml(xml);
-    }
-
-    /**
-     * Xml 解码.
-     */
-    public static String unescapeXml(String xmlEscaped) {
-        return StringEscapeUtils.unescapeXml(xmlEscaped);
     }
 
     /**

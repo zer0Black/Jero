@@ -25,7 +25,7 @@
         <!-- 自定义starter -->
         <dependency>
             <groupId>com.jero</groupId>
-            <artifactId>spring-boot-starter-druid</artifactId>
+            <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid.starter.version}</version>
         </dependency>
 

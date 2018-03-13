@@ -21,35 +21,35 @@ public class ConvertUtilsTest {
 
     Date date;
 
-@Before
-public void before() throws Exception {
-    date = new Date(2017-1900, 8-1, 2, 11, 22, 33);
-} 
+    @Before
+    public void before() throws Exception {
+        date = new Date(2017-1900, 8-1, 2, 11, 22, 33);
+    }
 
-@After
-public void after() throws Exception { 
-} 
+    @After
+    public void after() throws Exception {
+    }
 
-@Test
-public void testFormatStrFromDate() throws Exception {
-    assertEquals("2017-08-02", ConvertUtils.formatStrFromDate(date));
-}
+    @Test
+    public void testFormatStrFromDate() throws Exception {
+        assertEquals("2017-08-02", ConvertUtils.formatStrFromDate(date));
+    }
 
-@Test
-public void testFormatStrFromTime() throws Exception {
-    assertEquals("2017-08-02 11:22:33", ConvertUtils.formatStrFromTime(date));
-}
+    @Test
+    public void testFormatStrFromTime() throws Exception {
+        assertEquals("2017-08-02 11:22:33", ConvertUtils.formatStrFromTime(date));
+    }
 
-@Test
-public void testStrToDateStr() throws Exception {
-    assertEquals(date, ConvertUtils.strToDate("2017-08-02 11:22:33"));
-}
+    @Test
+    public void testStrToDateStr() throws Exception {
+        assertEquals(date, ConvertUtils.strToDate("2017-08-02 11:22:33"));
+    }
 
-@Test(expected = ParseException.class)
-public void testStrToDateForStrPattern() throws Exception {
-    assertEquals(date, ConvertUtils.strToDate("2017/08/02 11:22:33", "yyyy/MM/dd HH:mm:ss"));
-    assertEquals(date, ConvertUtils.strToDate("2017-08-02 11:22:33", null));
-    assertNotEquals(date, ConvertUtils.strToDate("2017/08/02 11:22:33", null));
-}
+    @Test(expected = ParseException.class)
+    public void testStrToDateForStrPattern() throws Exception {
+        assertEquals(date, ConvertUtils.strToDate("2017/08/02 11:22:33", "yyyy/MM/dd HH:mm:ss"));
+        assertEquals(date, ConvertUtils.strToDate("2017-08-02 11:22:33", null));
+        assertNotEquals(date, ConvertUtils.strToDate("2017/08/02 11:22:33", null));
+    }
 
 }

@@ -11,7 +11,8 @@
 		<module>jero-common</module>
 		<module>jero-file</module>
         <module>jero-center</module>
-    </modules>
+		<module>jero-user</module>
+	</modules>
     <packaging>pom</packaging>
 
 	<name>jero</name>
@@ -101,6 +102,12 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-security</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>bcpkix-jdk15on</artifactId>
+					<groupId>org.bouncycastle</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>

@@ -1,9 +1,9 @@
 package com.lxt.file;
 
-import com.google.gson.Gson;
 import com.lxt.core.enums.Code;
 import com.lxt.core.http.Result;
 import com.lxt.file.controller.FileController;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,7 +46,7 @@ public class JeroFileControllerTest {
         Assert.assertEquals(200, status);
 
         String content = result.getResponse().getContentAsString();
-        String expectedContent =  new Gson().toJson(Result.error(Code.ILLEGAL_PARAM.getCode(), "文件id不存在"));
+        String expectedContent =  new ObjectMapper().writeValueAsString(Result.error(Code.ILLEGAL_PARAM.getCode(), "文件id不存在"));
         Assert.assertEquals(expectedContent, content);
     }
 

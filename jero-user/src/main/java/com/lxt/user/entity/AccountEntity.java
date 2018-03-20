@@ -1,6 +1,7 @@
 package com.lxt.user.entity;
 
 import com.lxt.core.entity.BaseEntity;
+import com.lxt.user.constants.AccountStatusEnum;
 
 import java.io.Serializable;
 
@@ -18,7 +19,9 @@ public class AccountEntity extends BaseEntity implements Serializable {
 
     private String realName;
 
-    private int type; //账户类型
+    private short type; //账户类型
+
+    private short status = AccountStatusEnum.ENABLE.getValue(); //账户状态，0禁用，1启用，默认启用
 
     public String getUserName() {
         return userName;
@@ -44,11 +47,19 @@ public class AccountEntity extends BaseEntity implements Serializable {
         this.realName = realName;
     }
 
-    public int getType() {
+    public short getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(short type) {
         this.type = type;
+    }
+
+    public short getStatus() {
+        return status;
+    }
+
+    public void setStatus(short status) {
+        this.status = status;
     }
 }

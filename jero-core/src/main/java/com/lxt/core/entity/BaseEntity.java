@@ -17,7 +17,7 @@ public class BaseEntity implements Serializable{
     private Integer id;
 
     @Column(name = "DEL")
-    private Integer del = DeleteEnum.NORMAL.getValue(); //是否删除，1为正常，0为已删除
+    private Short del = DeleteEnum.NORMAL.getValue(); //是否删除，1为正常，0为已删除
 
     @Column(name = "CREATE_TIME")
     private Date createTime; //创建时间
@@ -33,11 +33,11 @@ public class BaseEntity implements Serializable{
         this.id = id;
     }
 
-    public Integer getDel() {
+    public Short getDel() {
         return del;
     }
 
-    public void setDel(Integer del) {
+    public void setDel(Short del) {
         this.del = del;
     }
 

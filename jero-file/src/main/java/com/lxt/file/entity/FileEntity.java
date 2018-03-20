@@ -22,7 +22,6 @@ public class FileEntity extends BaseEntity implements Serializable{
 
     private String savePath;
 
-
     public FileEntity(String name, String type, String contentType,
                       Long size, String savePath){
         this.name = name;

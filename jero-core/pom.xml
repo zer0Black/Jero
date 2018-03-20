@@ -7,6 +7,20 @@
         <groupId>com.lxt</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <oracle.driver.version>11.2.0.1.0</oracle.driver.version>
+        <druid.starter.version>1.0.0</druid.starter.version>
+        <dozer.starter.version>1.0.0</dozer.starter.version>
+        <mybatis.starter.version>1.2.3</mybatis.starter.version>
+        <pagehelper.starter.version>1.2.3</pagehelper.starter.version>
+        <swagger2.version>2.8.0</swagger2.version>
+    </properties>
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jero-core</artifactId>
@@ -27,6 +41,11 @@
             <groupId>com.jero</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jero</groupId>
+            <artifactId>dozer-spring-boot-starter</artifactId>
+            <version>${dozer.starter.version}</version>
         </dependency>
 
         <!-- 数据库 -->

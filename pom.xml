@@ -29,12 +29,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-
-		<oracle.driver.version>11.2.0.1.0</oracle.driver.version>
-		<druid.starter.version>1.0.0</druid.starter.version>
-		<mybatis.starter.version>1.2.3</mybatis.starter.version>
-		<pagehelper.starter.version>1.2.3</pagehelper.starter.version>
-		<swagger2.version>2.8.0</swagger2.version>
 	</properties>
 
 	<repositories>

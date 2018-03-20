@@ -1,9 +1,6 @@
 package com.lxt.core.http;
 
-import com.lxt.core.enums.Code;
-
 import java.io.Serializable;
-import java.util.Map;
 
 /**
  * 返回对象
@@ -16,7 +13,7 @@ public class ResponseMessage<T> implements Serializable{
     private static final long serialVersionUID = 2999784516561316773L;
 
     private int respCode;
-    private String respMsg;
+    private String message;
     private T data;
     private boolean ok;
 
@@ -25,12 +22,12 @@ public class ResponseMessage<T> implements Serializable{
 
     public ResponseMessage(int respCode, String message) {
         this.respCode = respCode;
-        this.respMsg = message;
+        this.message = message;
     }
 
     public ResponseMessage(int respCode, String message, boolean ok, T data) {
         this.respCode = respCode;
-        this.respMsg = message;
+        this.message = message;
         this.ok = ok;
         this.data = data;
     }
@@ -44,11 +41,11 @@ public class ResponseMessage<T> implements Serializable{
     }
 
     public String getMessage() {
-        return respMsg;
+        return message;
     }
 
     public void setMessage(String message) {
-        this.respMsg = message;
+        this.message = message;
     }
 
     public T getData() {

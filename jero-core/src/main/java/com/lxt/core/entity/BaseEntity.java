@@ -22,6 +22,9 @@ public class BaseEntity implements Serializable{
     @Column(name = "CREATE_TIME")
     private Date createTime; //创建时间
 
+    @Column(name = "LAST_UPDATE_TIME")
+    private Date lastUpdateTime; //最后一次更新时间
+
     @Column(name = "CREATE_BY")
     private String createBy; //创建人
 
@@ -57,4 +60,11 @@ public class BaseEntity implements Serializable{
         this.createBy = createBy;
     }
 
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
+    }
 }
